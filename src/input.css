@@ -1,0 +1,86 @@
+@import "tailwindcss";
+@tailwind utilities;
+
+@utility flex-header {
+    @apply flex justify-end space-x-45 m-5 mr-20;
+}
+
+@utility font-header {
+    @apply font-sans text-shadow-lg text-gray-400;
+}
+
+@utility align-title {
+    @apply flex align-text-bottom;
+}
+
+@utility font-subtitles {
+    @apply font-[Stack_Sans] text-5xl text-white;
+}
+
+@layer {
+
+    .tab-content {
+        @apply hidden;
+        /*Hide all the panels by default */
+    }
+
+    .tab-content.active-content {
+        @apply block;
+        /*Only shows who has 'active-content */
+    }
+
+    .tab-btn {
+        @apply text-gray-500 hover:text-white;
+        /* Inactive button style */
+    }
+
+    .tab-btn.active.btn {
+        @apply font-semibold text-white border-b-2 border-white -mb-px;
+        /* Active button style */
+    }
+}
+
+@utility codeDisplay-style {
+    @apply flex justify-center-safe px-1 size-150 overflow-auto resize;
+}
+
+/* CERTIFICATE FLASHCARDS*/
+@layer components {
+    /* Main Wrapper */
+    .card {
+        /* Added w-full here so the container spans the screen width */
+        @apply flex flex-wrap justify-center gap-6 w-full;
+    }
+
+    /* Individual Flashcard */
+    .card-layOne {
+        @apply bg-gray-800 rounded-xl overflow-hidden flex flex-col shadow-xl border border-gray-700 h-100 w-200;
+    }
+
+    /* Image Container */
+    .card-layTwo {
+        @apply aspect-video w-full overflow-hidden cursor-zoom-in relative z-0 flex justify-center;
+    }
+
+    /* The Image */
+    .img-certificate {
+        @apply w-full h-full object-cover transition-transform duration-300;
+        @apply group-hover:scale-105;
+    }
+}
+/*------------------------------------------------------ */
+
+@utility techCards {
+    @apply h-45 w-150 rounded-lg bg-transparent text-white border border-gray-50 pl-10 pt-5;
+}
+
+@utility img-Tech {
+    @apply size-20 flex justify-items-center space-x-4 ml-35 mt-5;
+}
+
+@utility img-hover {
+    @apply scale-100 hover:scale-110;
+}
+
+
+

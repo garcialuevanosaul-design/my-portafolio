@@ -1,0 +1,1122 @@
+<!doctype html>
+<html class="scroll-smooth snap-y snap-mandatory">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./output.css" rel="stylesheet">
+    <link rel="stylesheet" href="prism.css">
+    <script src="./code.js"></script>
+    <script src="prism.js"></script>
+    <link rel="icon" type="image/x-icon" href="home_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg">
+    <title>Saul Garcia Web</title>
+</head>
+
+<body>
+    <div class="fixed inset-0 -z-10 h-full w-full bg-gray-950">
+        <div class="absolute top-[-10%] left-[-10%] h-[500px] w-[500px] rounded-full bg-blue-600/20 blur-[120px]"></div>
+
+        <div class="absolute bottom-[-10%] right-[-10%] h-[500px] w-[500px] rounded-full bg-cyan-600/10 blur-[120px]">
+        </div>
+
+        <div class="absolute top-[40%] left-[30%] h-[300px] w-[300px] rounded-full bg-indigo-500/10 blur-[100px]"></div>
+    </div>
+    <header class="flex-header absolute w-full z-50 pr-25">
+        <a href="http://www.linkedin.com/in/saul-garcia-luevano" class="font-header hover:text-white"
+            target="_blank">Linkedin</a>
+        <a href="https://github.com/saul2006-mx" class="font-header hover:text-white" target="_blank"> GitHub</a>
+        <a href="Official_Resume.pdf" class="font-header hover:text-white" download="resume">CV ↓</a>
+    </header>
+    <main>
+        <section class="h-screen snap-start flex flex-col justify-center items-center" id="home"> <!--Home Section-->
+            <div class="flex justify-between items-start px-10">
+
+                <div class="ml-45">
+
+                    <h1 class="text-white font-[Google_Sans_Code] text-8xl  ">Hello! I'm Saul Garcia</h1>
+                    <p class="font-header">I am a sophomore computer science major at the University of Texas at El Paso. As a computer scientist, I am passionate about <br>creating and innovating in the world of technology and having the ability to develop tools to democratize technology around the world. </p>
+
+                </div>
+
+                <ul class="list-none space-y-15 mr-50 ml-25">
+                    <li class="font-header hover:text-white"><a href="#projects">Projects</a></li>
+                    <li class="font-header hover:text-white"><a href="#certificates">Certificates</a></li>
+                    <li class="font-header hover:text-white"><a href="#technologies">Technologies</a></li>
+                </ul>
+
+            </div>
+        </section>
+
+        <section class="min-h-screen snap-start" id="projects"> <!--Projects Section-->
+            <div class="ml-35 mt-25">
+                <h1 class="font-subtitles pt-10">Projects</h1>
+                <h2 class="font-[Stack_Sans] text-2xl text-white">Introduction to Computer Science</h2>
+            </div>
+
+            <section class="w-full max-w-2xl mx-auto p-4">
+
+                <div class="flex space-x-1 border-b border-gray-300">
+                    <button class="tab-btn px-4 py-2 text-white" data-target="cl1">
+                        CL1 Project
+                    </button>
+
+                    <button class="tab-btn px-4 py-2 text-white" data-target="cl2">
+                        CL2 Project
+                    </button>
+
+                    <button class="tab-btn px-4 py-2 text-white" data-target="cl3">
+                        CL3 Project
+                    </button>
+            </section>
+            </div>
+
+            <div class="mx-auto">
+
+                <div id="cl1" class="tab-content">
+                    <h3 class="text-xl font-semibold text-white flex justify-center">
+                        MINER DISCO
+                    </h3>
+                    <p class="mt-2 text-white flex justify-center-safe">
+                        This is a Java console application that simulates a "Miner Disco" music store. <br>The program
+                        allows users to
+                        browse albums by genre (read from an albums.txt file), <br> add items to a shopping cart, and
+                        complete a checkout
+                        process. <br> It includes input validation and calculates totals with tax, tips, and delivery
+                        fees.
+                    </p>
+                    <div class="flex justify-center">
+                        <div class="codeDisplay-style ">
+                            <pre>
+            <code class="language-java">
+                import java.io.File;
+                import java.io.FileNotFoundException;
+                import java.util.InputMismatchException;
+                import java.util.Scanner;
+
+                public class CL1_Garcia {
+                    public static void main(String[] args) {
+                        Scanner inputString = new Scanner(System.in); // Scanner to read the String inputs 
+                        Scanner inputInt = new Scanner(System.in); // Scanner to read the Integer inputs
+                        double albumPrice = 0;
+                        int copies = 0;
+                        double priceCart = 0;
+                        double tip;
+                        double tax = 8.25;
+                        double finalTotal;
+                        int selectionMenu = 0;
+                        String clearCart;
+                        boolean validGenre = false;
+                        boolean validAlbum = false;
+                        boolean validCopies = false;
+                        int pickOrDelivery = 0;
+                        String creditCard;
+
+                        try {
+                            File albumsList = new File("albums.txt"); 
+                            Scanner scannerAlbums = new Scanner(albumsList); // Scanner to read the file
+
+                            System.out.println("Welcome to Miner Disco!");
+
+                                while (true) { 
+                                    try {
+                                        System.out.print(" 1.Order\n 2.View Current Order\n 3.Clear Cart Contents\n 4.Checkout\n 5.Exit Miner Disco"); 
+                                        System.out.println("\nSelect an option: ");
+                                        selectionMenu = inputInt.nextInt(); 
+                                        inputInt.nextLine();
+
+                                        if((selectionMenu >= 1 && selectionMenu <= 5) == false){
+                                            System.out.println("Please enter a number between 1 and 5");
+                                        } 
+                                        
+                                    } catch (InputMismatchException errorInputMismatchException) {
+                                        System.out.println("Invalid input. Please enter a number between 1 and 5  " + errorInputMismatchException);
+                                        inputInt.nextLine();
+                                    }
+
+                                    if (selectionMenu == 1) {  // If statement if their selection is Order (1)
+                                        try {
+                                            validGenre = false;
+                                            
+                                            while (!validGenre) { //Loop to valid the genre
+                                                System.out.println(" 1.Rock \n 2.Pop \n 3.Hip-Hop \n 4.Electronic \n 5.Rap "); 
+                                                System.out.println("\nEnter genre name: ");
+                                                String selectionGenre = inputString.nextLine();
+
+                                                if (selectionGenre.equalsIgnoreCase("rock") || selectionGenre.equalsIgnoreCase("pop") ||
+                                                    selectionGenre.equalsIgnoreCase("hip-hop") || selectionGenre.equalsIgnoreCase("electronic") ||
+                                                    selectionGenre.equalsIgnoreCase("rap")) {
+
+                                                    validGenre = true;
+                                                    
+                                                    scannerAlbums = new Scanner(albumsList);
+                                                    System.out.println("Albums in " + selectionGenre + " genre:");
+
+                                                    boolean found = false;
+                                                    while (scannerAlbums.hasNext()) {  //while loop to print every single album of a specific genre
+                                                        String name = scannerAlbums.next();
+                                                        String genre = scannerAlbums.next();
+                                                        double price = scannerAlbums.nextDouble();
+
+                                                        if (genre.equalsIgnoreCase(selectionGenre)) { 
+                                                            System.out.println("Title: " + name);
+                                                            System.out.println("Genre: " + genre);
+                                                            System.out.println("Price: " + price);
+                                                            System.out.println("------------------");
+                                                            found = true;
+                                                        }
+                                                    }
+
+                                                    if (!found) { 
+                                                        System.out.println("No albums found in this genre.");
+                                                    }
+
+                                                    albumPrice = 0;
+
+                                                    while (!validAlbum) {
+                                                        System.out.println("Which album would you like to buy?");
+                                                        String selectionAlbum = inputString.nextLine();
+
+                                                        scannerAlbums = new Scanner(albumsList); 
+                                                        while (scannerAlbums.hasNext()) { //Scanning all the albums again for look the album selected
+                                                            String name = scannerAlbums.next();
+                                                            String genre = scannerAlbums.next();
+                                                            double price = scannerAlbums.nextDouble();
+
+                                                            if (name.equalsIgnoreCase(selectionAlbum)) { //check for the album price
+                                                                albumPrice = price;
+                                                                validAlbum = true;
+                                                                break;
+                                                            }
+                                                        }
+
+                                                        if (!validAlbum) {
+                                                            System.out.println("Album not found. Please try again.");
+                                                        }
+                                                    }
+                                                    while (!validCopies) { //Loop to valid the input and ask to the user how many copies
+                                                        System.out.println("How many copies of the album would you like?");
+                                                        if (inputInt.hasNextInt()) {
+                                                            copies = inputInt.nextInt();
+                                                            inputInt.nextLine(); 
+                                                            
+                                                            priceCart += (albumPrice * copies);
+                                                            System.out.println("------Cart------");
+                                                            System.out.println("Total: $" + priceCart);
+                                                            System.out.println("Total items: " + copies);
+                                                            validCopies = true; //Stop the loop
+                                                        } else {
+                                                            System.out.println("Invalid input. Please enter a number.");
+                                                            inputInt.nextLine(); 
+                                                        }
+                                                    }
+                                                } else {
+                                                    System.out.println("Please enter a valid genre.");
+                                                }
+                                            }
+                                        } catch (Exception e) {
+                                            System.out.println("An unexpected error occurred: " + e);
+                                        }
+
+                                    }
+
+                                        
+
+
+                                if (selectionMenu == 2) { // If statement if their selection is View Current Order (2)
+                                    if ((albumPrice == 0) && (copies == 0)) {
+                                        System.out.println("No items have been picked");
+                                    } else {
+                                        System.out.println("----------------");
+                                        System.out.println("Price of cart: " + priceCart);
+                                        System.out.println("Total amount of items: " + copies);
+                                        System.out.println("----------------");
+                                    }
+                                }
+
+                                if (selectionMenu == 3) { // If statement if their selection is Clear Cart Contents (3)
+                                    boolean continueToClear = true;
+                                    while(continueToClear){
+                                    if ((albumPrice == 0) && (copies == 0)) { //Check if the cart is empty, before displaying the cart
+                                        System.out.println("No items have been picked");
+                                        continueToClear = false; //Stop the loop
+                                        break;
+                                    }
+                                    System.out.println("Are you sure you would like to clear the contents of your cart? (yes/no)");
+                                    clearCart = inputString.nextLine();
+                                    if (clearCart.equalsIgnoreCase("yes")) {
+                                        priceCart = 0;
+                                        copies = 0;
+                                        System.out.println("Cart cleared successfully");
+                                        System.out.println("------Cart------");
+                                        System.out.println("Total: " + priceCart);
+                                        System.out.println("Total items: " + copies);
+                                        continueToClear = false; //Stop the loop
+                                    }
+                                    }
+                                }
+
+                                if (selectionMenu == 4) { // If statement if their selection is Checkout (4)
+                                    boolean continueCheckout = true;
+                                    while (continueCheckout) {
+                                        if (priceCart == 0) {
+                                            System.out.println("Your cart is empty. Please add items before the checkout");
+                                            continueCheckout = false; //Stop the loop
+                                            break;
+                                        }
+                                        try { //Try for check invalid inputs
+                                            System.out.println("Would you like pickup or delivery? ");
+                                            System.out.println("Enter (1) for 'pickup' or (2) for 'delivery' ");
+                                            pickOrDelivery = inputInt.nextInt();
+
+                                            if((pickOrDelivery == 1 && pickOrDelivery == 2) == false){
+                                                System.out.println("Please enter (1) or (2)");
+                                                
+                                            }
+                                            
+                                        } catch (InputMismatchException errorInputMismatchException) {
+                                                System.out.println("Invalid input. Please enter a number between 1 and 5  " + errorInputMismatchException);
+                                                inputInt.nextLine();
+
+                                        }
+                                    
+
+                                        if (pickOrDelivery == 2) {
+                                            System.out.println("Delivery includes a $7.00 fee");
+
+                                            while (true) {
+                                                try {
+                                                    System.out.println("Enter a tip percentage:");
+                                                    tip = inputInt.nextDouble();
+
+                                                    if (tip >= 0) {// Check if the input tip is not a negative number
+                                                        break;
+                                                    } else {
+                                                        System.out.println("Tip cannot be negative. Please enter a valid percentage.");
+                                                    }
+
+                                                } catch (NumberFormatException e) {
+                                                    System.out.println("Invalid input. Please enter a valid number.");
+                                                }
+                                            }
+
+
+                                            tax = priceCart * (tax / 100.0);
+                                            finalTotal = priceCart + tip + tax + 7.00;
+
+                
+                                            while (true) { //Loop to check the length of the credi card
+                                                System.out.println("Enter your 16-digit credit card to purchase:");
+                                                creditCard = inputString.nextLine(); //The variable of creditCard is an String because the number is too long
+                                                if (creditCard.length() == 16) { 
+                                                    break;
+                                                } else {
+                                                    System.out.println("Invalid credit card number. Please enter a valid 16-digit number.");
+                                                }
+                                            }
+
+                                            System.out.println("Order Summary:");
+                                            System.out.println("Number of items: " + copies);
+                                            System.out.println("Subtotal (before tax): $" + String.format("%.2f", priceCart));
+                                            System.out.println("Delivery fee: $7.00");
+                                            System.out.println("Tip: $" + String.format("%.2f", tip));
+                                            System.out.println("Tax (8.25%): $" + String.format("%.2f", tax));
+                                            System.out.println("Final total: $" + String.format("%.2f", finalTotal));
+
+                                            continueCheckout = false; //Stop the loop
+
+                                        } else if (pickOrDelivery == 1) {
+
+                                            while (true) {
+                                                try {
+                                                    System.out.println("Enter a tip percentage:");
+                                                    tip = inputInt.nextDouble();
+
+                                                    if (tip >= 0) { 
+                                                        break;
+                                                    } else {
+                                                        System.out.println("Tip cannot be negative. Please enter a valid percentage.");
+                                                    }
+
+                                                } catch (NumberFormatException e) {
+                                                    System.out.println("Invalid input. Please enter a valid number.");
+                                                }
+                                            }
+
+                                            tax = priceCart * (tax / 100.0);
+                                            finalTotal = priceCart + tip + tax;
+
+                                            while (true) {
+                                                System.out.println("Enter your 16-digit credit card to purchase:");
+                                                creditCard = inputString.nextLine();
+                                                if (creditCard.length() == 16) { 
+                                                    break;
+                                                } else {
+                                                    System.out.println("Invalid credit card number. Please enter a valid 16-digit number.");
+                                                }
+                                            }
+
+                                            System.out.println("Order Summary:");
+                                            System.out.println("Number of items: " + copies);
+                                            System.out.println("Subtotal (before tax): $" + String.format("%.2f", priceCart));
+                                            System.out.println("Tip: $" + String.format("%.2f", tip));
+                                            System.out.println("Tax (8.25%): $" + String.format("%.2f", tax));
+                                            System.out.println("Final total: $" + String.format("%.2f", finalTotal));
+
+                                            continueCheckout = false;
+                                        }
+
+                                    }
+
+                                    }
+                                    if (selectionMenu == 5) { // If statement if their selection is Exit Miner Disco (5) 
+                                        System.out.println("Thank you for using Miner Disco!");
+                                        break;
+                                    }
+                            }
+                        } catch (FileNotFoundException error) {
+                            System.out.println("File not found: " + error);
+                        }
+                    }
+                }
+            </code>
+          </pre>
+                        </div>
+                    </div>
+                </div>
+                <div id="cl2" class="tab-content">
+                    <h3 class="text-xl font-semibold text-white flex justify-center">
+                        BATTLESHIP-GAME
+                    </h3>
+                    <p class="mt-2 text-white flex justify-center-safe">
+                        This is a Java console application for a classic Battleship game. <br> The program reads the
+                        ship
+                        layout (marked with 'S') from a .txt file. <br> The player has 20 "bombs" (tries) to guess the
+                        coordinates of the ships, <br> receiving "Hit!" (X) or "Miss!" (O) feedback. The game ends when
+                        the
+                        player <br> sinks all ships or runs out of bombs.
+                    </p>
+                    <div class="flex justify-center">
+                        <div class="codeDisplay-style">
+                            <pre>
+            <code class="language-java">
+                import java.io.File;
+                import java.io.FileNotFoundException;
+                import java.util.Scanner;
+                public class CL2_Garcia{
+
+                    public static String [][] userGame = new String[11][11];
+                    public static String [][] actualGame = {{"-", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"},
+                                                            {"0", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"},
+                                                            {"1", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"},
+                                                            {"2", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"},
+                                                            {"3", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"},
+                                                            {"4", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"},
+                                                            {"5", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"},
+                                                            {"6", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"},
+                                                            {"7", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"},
+                                                            {"8", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"},
+                                                            {"9", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"}};
+
+                    public static void main(String[] args) {
+
+                        int bomb = 20;
+
+                        Scanner input = new Scanner(System.in);
+
+                        System.out.println("Get ready for a game of Battleship! ");
+                        getGame("game3.txt"); //read the file first
+
+                        for(int i = 0; i < actualGame.length; i++){ //Read the first actual game
+                            for(int j = 0; j < actualGame[i].length; j++){
+                                System.out.print(actualGame[i][j]);
+                            }
+                            System.out.println();
+                        }
+
+
+                        // Read the rows and cols
+                        try {
+
+                            while (bomb > 0) { 
+                                int selectionRow = -1;
+                                boolean validRow = false;
+
+                                while (!validRow) {
+                                    System.out.println("Enter row (0-9): ");
+                                    
+                                    if(input.hasNextInt()){
+                                        selectionRow = input.nextInt();
+
+                                        if (selectionRow >= 0 && selectionRow <= 9) {
+                                            validRow = true;
+                                        } else {
+                                            System.out.println("Invalid coordinate. Try again.");
+                                        }
+                                    }else{
+                                        System.out.println("Invalid input. Please enter a number. ");
+                                        input.next();
+                                    }
+
+                                }
+
+                                int selectionCol = -1;
+                                boolean validCol = false;
+
+                                while (!validCol) {
+                                    System.out.println("Enter column (0-9): ");
+                                    
+                                    if(input.hasNextInt()){
+                                        selectionCol = input.nextInt();
+
+                                        if (selectionCol >= 0 && selectionCol <= 9) {
+                                            validCol = true;
+                                        } else {
+                                            System.out.println("Invalid coordinate. Try again.");
+                                        }
+                                    }else{
+                                        System.out.println("Invalid input. Please enter a number. ");
+                                        input.next();
+                                    }
+                                }
+
+                                bomb = checkTry(selectionRow, selectionCol, bomb); // count the bombs remaining
+                                usersBattle(); //ask for the actual user Game
+                                if(isGameWon(bomb) == true){ //if isGameWon true, base on the bombs remaining
+                                    System.out.println("You sunk all the ships! You win!");
+                                    printGame();
+                                    break;
+                                }
+
+                                if(bomb == 0 && (isGameWon(bomb) == false)){ // if the bombs runs out and isGameWon false, you loose
+                                    System.out.println("Out of tries! Game Over");
+                                    printGame();
+                                }
+                                                
+                            }               
+                        } catch (Exception e) {
+                            System.out.println("An unexpected error ocurred: " + e);
+                        }
+                    }
+
+                    public static String [][] getGame(String fileName){
+                        try {
+                            File gameFile = new File(fileName);
+                            Scanner scannerGame = new Scanner(gameFile); // Scanner for read the content of the file
+                            int row = 0;
+
+                            // Iterate each line of the file
+                            while(scannerGame.hasNext()){
+                                String readGame = scannerGame.nextLine(); // Scanner for read the line
+                                Scanner lineScanner = new Scanner(readGame); // Scaner for read each character  of the line
+                            
+                            // Iterate each element in the line and store it
+                                for(int col = 0; col < userGame[row].length; col++){ // Number of row in a column
+                                    userGame[row][col] = lineScanner.next();
+                                }
+                                row++;
+                            }
+                        } catch (FileNotFoundException exceptionFile) {
+                            System.out.println("File not found " + exceptionFile);
+                        }
+                        return userGame; // return the userGame global array
+                    }
+
+                    public static void usersBattle(){ //prints the actual game
+                        for(int i = 0; i < actualGame.length; i++){
+                            for(int j = 0; j < actualGame[i].length; j++){
+                                System.out.print(actualGame[i][j]);
+                            }
+                            System.out.println();
+                        }
+                    }
+
+                    public static int checkTry(int row, int col, int bomb){ //I change to Int to return the update bomb value in the main
+                        String current = actualGame[row + 1][col + 1]; // + 1 because the first row and col are not part of the game
+
+                        if(current.equals("X") || current.equals("O")){ // check if the pass row and col values, (selectionRow and selectionCol in the main), are X or O
+                            System.out.println("Already guessed there!");
+                        }else{
+                            if(userGame[row + 1][col + 1].equals("S")){
+                                actualGame[row + 1][col + 1] = "X";
+                                System.out.println("Hit!");
+                            }else{
+                                actualGame[row + 1][col + 1] = "O";
+                                System.out.println("Miss!");
+                            }
+                        }
+
+                        bomb--; // counter of bombs
+                        System.out.println("Bombs remaining: " + bomb);
+                        return bomb;
+                        
+                    }    
+                    
+                    public static boolean isGameWon(int tries){ 
+                        int countShips = 0;
+                        for(int i = 0; i < actualGame.length - 1; i++){ 
+                            for(int j = 0; j < actualGame[i].length - 1; j++){ //count all the S in the original grid
+                                if(userGame[i + 1][j + 1].equals("S")){
+                                    countShips++;
+                                }
+                            }
+                        }
+                        for(int i = 0; i < userGame.length - 1; i++){
+                            for(int j = 0; j < userGame[i].length - 1; j++){
+                                if(userGame[i + 1][j + 1].equals("S") && actualGame[i + 1][j + 1].equals("X")){ //look if it match the X in actualGame on the S in userGame
+                                    countShips--;
+                                }
+
+                            }
+                        }
+                        return countShips == 0; //return true if countShips reach to 0
+                    }
+                    public static void printGame() {
+                        // Print the first row, replicating the grid
+                        System.out.print("-");  
+                        for (int i = 0; i < actualGame.length - 1; i++) {
+                            System.out.print(i);
+                        }
+                        System.out.println();
+
+                        for (int i = 1; i < actualGame.length; i++) {
+                            System.out.print(i - 1);  // print the next rows 
+                            for (int j = 1; j < actualGame[i].length; j++) { // print each cell in the grid
+                                if (actualGame[i][j].equals("X") && userGame[i][j].equals("S")) {
+                                    System.out.print("X");
+                                } else if (actualGame[i][j].equals("O")) {
+                                    System.out.print("O");
+                                } else if (userGame[i][j].equals("S")) {
+                                    System.out.print("S");
+                                } else {
+                                    System.out.print("-");
+                                }
+                            }
+                            System.out.println();
+                        }
+                    }
+                
+                }
+            </code>
+          </pre>
+                        </div>
+                    </div>
+                </div>
+                <div id="cl3" class="tab-content">
+                    <h3 class="text-xl font-semibold text-white flex justify-center">
+                        POKEMON-BATTLE
+                    </h3>
+                    <p class="mt-2 text-white flex justify-center-safe">
+                        Java OOP project: A 'Poke-Miner' console app simulating a Pokémon world. <br>Uses Pokemon,
+                        Trainer,
+                        & Region classes. Loads data from pokedex.txt. <br> Manage trainers, build teams,and populate
+                        regions.
+                        <br>Features a turn-based battle system with Fire/Water/Grass type advantages.
+                    </p>
+                    <div class="flex justify-center">
+                        <div class="codeDisplay-style">
+                            <pre>
+            <code class="language-java">
+               import java.io.File;
+                import java.io.FileNotFoundException;
+                import java.util.*;
+
+                public class CL3_Garcia{
+                    public static void main(String[] args) {
+                        Pokemon pokemon = new Pokemon(); // new pokemon
+                        Pokemon [] pokedex = new Pokemon[20]; //pokedex
+                        int count = 0;
+                        int numOfTrainersInRegion = 0; //curr trainers in region
+                        int numOfPokemonsInRegion = 0; // curr pokemons in region
+                        Region region = new Region("Johto", 1, "Tropical");
+                        Random rand = new Random();
+                        Pokemon [] newArrPokemon = new Pokemon[20]; // new Array of pokemons
+                        Trainer [] newATrainers = new Trainer[10]; // new array of trainers
+                        
+                        try {
+                            File file = new File("pokedex.txt");
+                            Scanner scann = new Scanner(file);
+
+                            while(scann.hasNextLine()){
+                                // each pokemon, their attributes are set by the scanner
+                                pokemon  = new Pokemon(scann.next(), scann.next(), 1, scann.nextInt(), scann.nextInt()); 
+                                pokedex[count] = pokemon;
+                                count++;
+
+                            }
+
+                        } catch (FileNotFoundException e) {
+                            System.out.println("Not found " + e);
+                        }
+                        System.out.println();
+                        Scanner userIn = new Scanner(System.in);
+                        boolean finish = false;
+
+                        while(!finish){
+                        System.out.println("****************************** \n * Welcome to Poke-Miner * \n ******************************");
+                        System.out.println("Options:");
+                        System.out.println("1. Modify Region");
+                        System.out.println("2. Add/Remove Trainer to Region");
+                        System.out.println("3. Add/Remove Wild Pokemon to Region");
+                        System.out.println("4. Modify Trainer");
+                        System.out.println("5. Add/remove Pokemon From Trainer ");
+                        System.out.println("6. List Pokemon in Trainer");
+                        System.out.println("7. Simulate interaction between two trainers");
+                        System.out.println("8. Exit");
+                        System.out.println("**************************");
+                        System.out.println("Select Option: ");
+                        
+                        int menuChoice;
+                        try {
+                            menuChoice = userIn.nextInt();
+                            
+                        } catch (InputMismatchException e) {
+                            System.out.println("Invalid Input. Please enter an integer between 1 and 8");
+                            userIn.next();
+                            continue;
+                        }
+                        userIn.nextLine();
+
+
+                        switch (menuChoice) {
+                            case 1:
+                                boolean endModify = false;
+                                region.describeRegion();
+
+                                // Start a loop that ends when the user inputs continue
+                                while(!endModify){
+                                    System.out.println("Would you like to modify region name, climate, difficulty(1-5) or continue?");
+                                    String modify = userIn.nextLine();
+
+                                        // Modify name
+                                        if(modify.equalsIgnoreCase("name")){
+                                            System.out.println("Input the new name: ");
+                                            modify = userIn.nextLine();
+                                            region.setName(modify);
+                                            region.describeRegion();
+                                        
+                                        // Modify climate
+                                        }else if(modify.equalsIgnoreCase("climate")){
+                                            System.out.println("Input the new climate: ");
+                                            modify = userIn.nextLine();
+                                            region.setClimate(modify);
+                                            region.describeRegion();
+                                            
+                                        // Modify difficulty
+                                        }else if(modify.equalsIgnoreCase("difficulty")){
+                                            System.out.println("Input the new difficulty (1-5): ");
+                                            int modifyDifficulty = userIn.nextInt();
+                                            while(!(modifyDifficulty >= 1 && modifyDifficulty <= 5)){
+                                                System.out.println("Invalid difficulty, please enter a valid one from 1 to 5: ");
+                                                modifyDifficulty = userIn.nextInt();
+                                            }
+                                            userIn.nextLine();
+                                            region.setDifficulty(modifyDifficulty);
+                                            region.describeRegion();
+                                            
+                                        
+                                        }else if (modify.equalsIgnoreCase("continue")) {
+                                            endModify = true;
+                                            break;
+                                            
+                                        }else {
+                                            System.out.println("Invalid option! ");
+                                            break;
+                                        }  
+
+                                }
+
+                                System.out.println();
+                                break;
+
+                            case 2:
+                                
+                                System.out.println("Would you like to add or remove a trainer to/from the region?");
+                                String addOrRemoveTrainer = userIn.nextLine();
+
+                                // If the user select add
+                                if(addOrRemoveTrainer.equalsIgnoreCase("add")){
+                                    System.out.println("Trainer Name: ");
+                                    addOrRemoveTrainer = userIn.nextLine();
+                                    Trainer trainer = new Trainer(addOrRemoveTrainer); // create a new Trainer
+                                    region.addTrainer(trainer);
+                                    newATrainers[numOfTrainersInRegion] = trainer; // Populate the new Array of trainers with the new trainers
+                                    numOfTrainersInRegion++; // add one each time a trainer is created
+                                    
+                                }else if(addOrRemoveTrainer.equalsIgnoreCase("remove")){
+                                    System.out.println("Trainer name: ");
+                                    addOrRemoveTrainer = userIn.nextLine();
+                                    region.removeTrainer(addOrRemoveTrainer);
+                                }
+
+                                System.out.println();
+                                break;
+
+                            case 3:
+                                System.out.println("Would you like to add or remove wild Pokémon to/from the region? ");
+                                String addOrRemovePokemon = userIn.nextLine();
+                                if(addOrRemovePokemon.equalsIgnoreCase("add")){
+                                    if(numOfPokemonsInRegion < 20){
+                                        Pokemon newPokemon = new Pokemon();
+                                        int randomPokemon = rand.nextInt(pokedex.length);
+
+                                        // The new pokemon added use the same values from the pokemon at the random number in the pokedex Array
+                                        newPokemon.setName(pokedex[randomPokemon].getName());
+                                        newPokemon.setType(pokedex[randomPokemon].getType());
+                                        newPokemon.setLevel(pokedex[randomPokemon].getLevel());
+                                        newPokemon.setHealth(pokedex[randomPokemon].getHealth());
+                                        newPokemon.setAttackDamage(pokedex[randomPokemon].getAttackDamage());
+                                        region.addWildPokemon(newPokemon);
+                                        newArrPokemon[numOfPokemonsInRegion] = newPokemon; // Populate the new Array of pokemons with the new pokemons
+                                        numOfPokemonsInRegion++;
+
+                                        
+                                        System.out.println("There's a new wild Pokemon called " + newPokemon.getName() + " in the region!");
+                                        break;
+                                    }else{
+                                        System.out.println("This region is full!");
+                                    }
+
+                                }else if(addOrRemovePokemon.equalsIgnoreCase("remove")){
+                                    System.out.println("Wild pokemon to remove: ");
+                                    addOrRemovePokemon = userIn.nextLine();
+                                    region.removeWildPokemon(addOrRemovePokemon);
+                                } else{
+                                    System.out.println("Invalid option! ");
+                                }
+
+
+                                System.out.println();
+                                break;
+
+                            case 4:
+                                for(int i = 0; i < numOfTrainersInRegion; i++){
+                                    if(newATrainers[i] == null){
+                                        System.out.println("There are no trainers in this region, please add one to modify!");
+                                        break;
+                                    }
+
+                                    System.out.println("Which Trainer? ");
+                                    String modifyTrainer = userIn.nextLine();
+                                    Trainer trainerToModify = null;
+                                    boolean finishModifyTrainer = false;
+                                            if(modifyTrainer.equalsIgnoreCase(newATrainers[i].getName())){
+                                                trainerToModify = newATrainers[i]; // We selected the trainer to modifiy, from the new array of trainers
+                                                newATrainers[i].getDetails();
+                                                while(!finishModifyTrainer){
+                                                    System.out.println("Would you like to modify name, champ status, partner or continue? ");
+                                                    modifyTrainer = userIn.nextLine();
+
+                                                    if(modifyTrainer.equalsIgnoreCase("name")){
+                                                        System.out.println("New Trainer Name: ");
+                                                        modifyTrainer = userIn.nextLine();
+                                                        newATrainers[i].setName(modifyTrainer);
+                                                        trainerToModify.setName(modifyTrainer);
+                                                        newATrainers[i].getDetails();
+
+                                                    }else if(modifyTrainer.equalsIgnoreCase("champ status")){
+                                                        System.out.println("New Champ Status (yes/no): ");
+                                                        modifyTrainer = userIn.nextLine();
+                                                        if(modifyTrainer.equalsIgnoreCase("yes")){
+                                                            newATrainers[i].setPokemonChampion(true);
+                                                            newATrainers[i].getDetails();
+                                                        }else if(modifyTrainer.equalsIgnoreCase("no")){
+                                                            newATrainers[i].setPokemonChampion(false);
+                                                            newATrainers[i].getDetails();
+                                                        }
+
+                                                    }else if(modifyTrainer.equalsIgnoreCase("partner")){
+                                                            System.out.println("New Partner: ");
+                                                            modifyTrainer = userIn.nextLine();
+
+                                                            if(modifyTrainer.equalsIgnoreCase("continue")){
+                                                                finishModifyTrainer = true;
+                                                                i = 100;
+                                                            }else{
+                                                                boolean partnerExists = false; //check if the partner exist
+                                                                // Check if the partner exists
+                                                                for (int j = 0; j < numOfPokemonsInRegion; j++) {
+                                                                    if (newArrPokemon[j] != null && newArrPokemon[j].getName().equalsIgnoreCase(modifyTrainer)) {
+                                                
+                                                                        trainerToModify.choosePartner(modifyTrainer);
+                                                                        partnerExists = true; 
+                                                                        System.out.println(trainerToModify.getName() + " is now partnered with " + modifyTrainer);
+                                                                        finishModifyTrainer = true;
+                                                                        break;  // Exit loop after finding the partner
+                                                                    
+                                                                }
+
+                                                                // If partner does not exist after the loop
+                                                                if (!partnerExists) {
+                                                                    System.out.println("Partner does not exist. Please try again.");
+                                                                }
+                                                                }
+                                                            }
+
+
+
+                                                    }else if(modifyTrainer.equalsIgnoreCase("continue")){
+                                                        finishModifyTrainer = true;
+                                                        i = 100;
+                                                        break;
+                                                        
+                                                    }
+
+                                                }
+
+                                            }else if(!(modifyTrainer.equalsIgnoreCase(newATrainers[i].getName()))){
+                                                System.out.println("This trainer doesnt exist! ");
+                                                    break;
+                                            }
+                                        
+                                    
+                            }
+
+                                System.out.println();
+                                break;
+                            case 5:
+                                // check if there are trainers
+                                if (numOfTrainersInRegion == 0) {
+                                    System.out.println("There are no trainers in this region, please add one first!");
+                                } else {
+                                    System.out.println("Which Trainer?");
+                                    String pokemonInTrainer = userIn.nextLine();
+                                    Trainer selectedTrainer = null; // create a new trainer as a temporary trainer
+
+                                    // check if there are trainers that match with the input
+                                    for (int i = 0; i < numOfTrainersInRegion; i++) {
+                                        if (newATrainers[i] != null && newATrainers[i].getName().equalsIgnoreCase(pokemonInTrainer)) {
+                                            selectedTrainer = newATrainers[i];
+                                            break;
+                                        }
+                                    }
+
+                                    if (selectedTrainer == null) {
+                                        System.out.println("This trainer doesnt exist!");
+                                    } else {
+                                        System.out.println("Would you like to add or remove Pokemon for Trainer?");
+                                        String addOrRemove = userIn.nextLine();
+
+                                        if (addOrRemove.equalsIgnoreCase("add")) {
+                                            if (numOfPokemonsInRegion > 0) {
+                                                Random random = new Random();
+                                                int randomIndex = random.nextInt(numOfPokemonsInRegion);
+                                                Pokemon pokemonToAdd = newArrPokemon[randomIndex];
+
+                                                //Look for a pokemon to add, using a random num
+                                                System.out.println("Pokemon Encountered:");
+                                                pokemonToAdd.getDetails();
+                                                selectedTrainer.addPokemon(pokemonToAdd);
+                                                System.out.println("There's a new team addition for " + selectedTrainer.getName() + "!");
+                                            } else {
+                                                System.out.println("No wild Pokemon available to add!");
+                                            }
+                                        } else if (addOrRemove.equalsIgnoreCase("remove")) {
+                                            System.out.print("Which pokemon would you like to remove? ");
+                                            String pokemonToRemove = userIn.nextLine();
+                                            selectedTrainer.removePokemon(pokemonToRemove);
+                                        } else {
+                                            System.out.println("Invalid option! ");
+                                        }
+                                    }
+                                }
+
+                                System.out.println();
+                                break;
+                            case 6:
+                                if (numOfTrainersInRegion == 0) {
+                                    System.out.println("There are no trainers in this region, please add one to modify!");
+                                } else {
+                                    System.out.println("Which trainer? ");
+                                    String listTrainerPokemons = userIn.nextLine();
+                                    Trainer trainerToList = null;
+
+                                    for (int j = 0; j < numOfTrainersInRegion; j++) {
+                                        if (newATrainers[j] != null && newATrainers[j].getName().equalsIgnoreCase(listTrainerPokemons)) {
+                                            trainerToList = newATrainers[j];
+                                            break;
+                                        }
+                                    }
+
+                                    if (trainerToList != null) {
+                                        System.out.println(trainerToList.getName() + "'s Pokemon Team: ");
+                                        trainerToList.printPokemonTeam();
+                                    } else {
+                                        System.out.println("Trainer not found!");
+                                    }
+                                }
+
+                                System.out.println();
+                                break;
+                            case 7:
+                                    System.out.println("Simulate interaction between two Trainers");
+                                    System.out.print("First Trainer: ");
+                                    String trainerAName = userIn.nextLine();
+                                    System.out.print("Second Trainer: ");
+                                    String trainerBName = userIn.nextLine();
+
+                                    // Find the trainers
+                                    Trainer trainerA = null;
+                                    Trainer trainerB = null;
+                                    for (int i = 0; i < numOfTrainersInRegion; i++) {
+                                        if (newATrainers[i] != null && newATrainers[i].getName().equalsIgnoreCase(trainerAName)) {
+                                            trainerA = newATrainers[i];
+                                        }
+                                        if (newATrainers[i] != null && newATrainers[i].getName().equalsIgnoreCase(trainerBName)) {
+                                            trainerB = newATrainers[i];
+                                        }
+                                    }
+
+                                    if(trainerA != null && trainerB != null){
+                                        region.simulateInteraction(trainerAName, trainerBName);
+                                    }
+                                System.out.println();
+                                break;
+                            case 8:
+                                System.out.println("Thank you for play Poke-Miner !");
+                                finish = true;
+                                System.out.println();
+                                break;
+                            default:
+                                System.out.println("That is not a valid choice. \n Back to menu! \n");
+                        }
+
+                        }
+                    }
+
+
+                }
+            </code>
+          </pre>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="ml-35 mt-25">
+                <h2 class="font-[Stack_Sans] text-3xl text-white">Final Project: Relational Database for Local
+                    Businesses
+                </h2>
+                <h3 class=" text-white">Introduction to Databases Course | 02/2023</h3>
+                <p class=" text-white">For my "Introduction to Databases" final project, I designed and
+                    developed a specialized relational database to solve data management issues at a local lumberyard
+                    <br>.The business struggled with disorganized data, particularly in collecting invoices and
+                    tracking large cash transactions, which led to lost information and difficulty <br> in resolving
+                    disputes. To
+                    solve this, I implemented a MySQL database that allows for the efficient recording and tracking of
+                    high-value orders and product information. <br>The system was designed to simplify large orders ,
+                    facilitate
+                    transaction reporting , and strengthen the company's financial security by providing clear,
+                    auditable
+                    records. <br> I chose MySQL for its efficient client-server architecture and multi-platform
+                    capabilities
+                    ,
+                    resulting in a simple, effective solution that improves accounting accuracy and <br> is easily
+                    adaptable
+                    to
+                    other small businesses.
+                </p>
+                <li class=" text-white">
+                    <ul><strong>Technologies Used:</strong> MySQL, Navicat</ul>
+                </li>
+            </div>
+        </section>
+
+        <section class="h-screen snap-start flex flex-col justify-center items-center" id="certificates">
+            <!--Certificates Section-->
+            <div class="flex justify-center pt-10 pb-5">
+                <h2 class="font-subtitles">
+                    My Certificates
+                </h2>
+            </div>
+            <div class=" p-10 w-full">
+                <div class="card ">
+                    <div class="card-layOne">
+                        <div class="card-layTwo group" onclick="openModal(this)">
+
+                            <img src="Introducción-a-Base-de-datos_-SQL-y-NoSQL - copia_page-0001.jpg"
+                                alt="base_datos_certificate" class="img-certificate">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-bold text-lg mb-2 text-white">Data Bases Introduction: SQL & NoSQL - Course
+                            </h3>
+                            <h4 class="text-white"><em>By IA center and endorsed by Microsoft - 08/2022</em></h4>
+                            <p class="text-gray-600 text-sm">In my Introduction to Databases: SQL and NoSQL course, I
+                                learned the fundamentals of both relational and non-relational database systems using
+                                technologies such as MySQL, SQL, NoSQL, and Navicat. I gained hands-on experience
+                                designing
+                                schemas, managing data, and working with client–server database environments. For my
+                                final
+                                project, I applied these skills by creating a MySQL relational database to address
+                                data-management challenges for a local business.</p>
+                        </div>
+                    </div>
+
+                    <div class="card-layOne">
+                        <div class="card-layTwo group" onclick="openModal(this)">
+                            <img src="CertificateOfCompletion_HTML Essential Training_page-0001.jpg"
+                                alt="html_certificate" class="img-certificate">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-bold text-lg mb-2 text-white">Workforce Course</h3>
+                            <p class="text-gray-600 text-sm">Description here...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="imageModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black bg-opacity-90"
+                onclick="closeModal()">
+
+                <button
+                    class="absolute top-5 right-5 text-white text-5xl font-bold hover:text-gray-300 z-50">&times;</button>
+
+                <img id="modalImage" src="" class="max-w-[90%] max-h-[90vh] rounded shadow-2xl"
+                    onclick="event.stopPropagation()">
+            </div>
+
+            <div id="imageModal"
+                class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80 invisible opacity-0 transition-all duration-300">
+
+                <button onclick="closeModal()"
+                    class="absolute top-5 right-5 text-white text-4xl font-bold hover:text-gray-300">&times;</button>
+
+                <img id="modalImage" src=""
+                    class="max-w-[90%] max-h-[90vh] rounded-lg shadow-2xl scale-95 transition-transform duration-300">
+
+                <div onclick="closeModal()" class="absolute inset-0 -z-10"></div>
+            </div>
+        </section>
+
+        <section class="h-screen snap-start flex flex-col justify-center items-center" id="technologies">
+            <!--Technologies Section-->
+            <div class="flex justify-center pt-10 pb-5">
+                <h1 class="font-subtitles">Technologies</h1>
+            </div>
+            <div class="flex justify-center-safe">
+                <div class="grid grid-cols-2 gap-4 mt-2 mb-7 pr-25 pl-25 items-center">
+                    <div class="techCards">
+                        <h2 class="flex justify-center text-2xl">Front-End</h2>
+                        <div class="img-Tech">
+                            <img class="img-hover" src="icons8-html.svg" alt="html-img">
+                            <img class="img-hover" src="icons8-css.svg" alt="css-img">
+                            <img class="img-hover" src="icons8-javascript.svg" alt="js-img">
+                        </div>
+                    </div>
+                    <div class="techCards">
+                        <h2 class="flex justify-center text-2xl">Back-End</h2>
+                        <div class="img-Tech">
+                            <img class="img-hover" src="icons8-java.svg" alt="java-img">
+                            <img class="img-hover" src="icons8-python.svg" alt="python-img">
+                            <img class="img-hover" src="icons8-mysql.svg" alt="mysql-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+    <a href="#home" class="fixed right-4 bottom-4 bg-blue-700 p-3 rounded-full"><img src="icons8-home (1).svg"
+            alt=""></a>
+</body>
+
+</html>
