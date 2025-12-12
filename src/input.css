@@ -2,11 +2,11 @@
 @tailwind utilities;
 
 @utility flex-header {
-    @apply flex justify-end space-x-45 m-5 mr-20;
+    @apply flex justify-center md:justify-end items-center gap-6 p-5 md:pr-20;
 }
 
 @utility font-header {
-    @apply font-sans text-shadow-lg text-gray-400;
+    @apply font-sans text-shadow-lg text-gray-400 text-lg transition-colors duration-300;
 }
 
 @utility align-title {
@@ -14,7 +14,7 @@
 }
 
 @utility font-subtitles {
-    @apply font-[Stack_Sans] text-5xl text-white;
+    @apply font-[Stack_Sans] text-3xl md:text-5xl text-white text-center;
 }
 
 @layer {
@@ -34,14 +34,23 @@
         /* Inactive button style */
     }
 
-    .tab-btn.active.btn {
+    .tab-btn.active-btn {
         @apply font-semibold text-white border-b-2 border-white -mb-px;
         /* Active button style */
+    }
+
+        /* Utility for fade animation */
+    @keyframes fade-in {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    .animate-fade-in {
+        animation: fade-in 0.5s ease-in-out;
     }
 }
 
 @utility codeDisplay-style {
-    @apply flex justify-center-safe px-1 size-150 overflow-auto resize;
+    @apply flex justify-center w-full max-w-4xl mx-auto h-96 overflow-auto rounded-lg border border-gray-700 bg-gray-900 shadow-lg mt-5;
 }
 
 /* CERTIFICATE FLASHCARDS*/
@@ -49,12 +58,12 @@
     /* Main Wrapper */
     .card {
         /* Added w-full here so the container spans the screen width */
-        @apply flex flex-wrap justify-center gap-6 w-full;
+        @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-6xl mx-auto px-4;
     }
 
     /* Individual Flashcard */
     .card-layOne {
-        @apply bg-gray-800 rounded-xl overflow-hidden flex flex-col shadow-xl border border-gray-700 h-100 w-150;
+        @apply bg-gray-800 rounded-xl overflow-hidden flex flex-col shadow-xl border border-gray-700 w-full hover:shadow-2xl transition-shadow duration-300;
     }
 
     /* Image Container */
@@ -71,15 +80,15 @@
 /*------------------------------------------------------ */
 
 @utility techCards {
-    @apply h-45 w-150 rounded-lg bg-transparent text-white border border-gray-50 pl-10 pt-5;
+    @apply h-auto w-full max-w-md rounded-lg bg-gray-900/50 text-white border border-gray-700 p-6 flex flex-col items-center;
 }
 
 @utility img-Tech {
-    @apply size-20 flex justify-items-center space-x-4 ml-35 mt-5;
+    @apply flex justify-center gap-6 mt-6;
 }
 
 @utility img-hover {
-    @apply scale-100 hover:scale-110;
+    @apply size-12 md:size-16 transition-transform duration-300 hover:scale-110;
 }
 
 
