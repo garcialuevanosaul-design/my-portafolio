@@ -54,7 +54,7 @@
 
     /* Individual Flashcard */
     .card-layOne {
-        @apply bg-gray-800 rounded-xl overflow-hidden flex flex-col shadow-xl border border-gray-700 h-100 w-200;
+        @apply bg-gray-800 rounded-xl overflow-hidden flex flex-col shadow-xl border border-gray-700 h-100 w-150;
     }
 
     /* Image Container */
