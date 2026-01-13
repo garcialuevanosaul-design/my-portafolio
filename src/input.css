@@ -17,6 +17,10 @@
     @apply font-[Stack_Sans] text-3xl md:text-5xl text-white text-center;
 }
 
+@utility project-Card{
+    @apply mx-auto mt-25 rounded-lg bg-transparent text-white border border-gray-50 p-6 md:pl-20 pt-5 pb-5 w-full max-w-6xl flex flex-col justify-center items-center;
+}
+
 @layer {
 
     .tab-content {
@@ -50,7 +54,7 @@
 }
 
 @utility codeDisplay-style {
-    @apply flex justify-center w-full max-w-4xl mx-auto h-96 overflow-auto rounded-lg border border-gray-700 bg-gray-900 shadow-lg mt-5;
+    @apply p-4 w-full max-w-4xl mx-auto h-96 overflow-auto rounded-lg border border-gray-700 bg-gray-900 shadow-lg mt-5;
 }
 
 /* CERTIFICATE FLASHCARDS*/
@@ -58,7 +62,7 @@
     /* Main Wrapper */
     .card {
         /* Added w-full here so the container spans the screen width */
-        @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-6xl mx-auto px-4;
+        @apply grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-6xl mx-auto px-4;
     }
 
     /* Individual Flashcard */

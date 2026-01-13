@@ -21,7 +21,7 @@
 
         <div class="absolute top-[40%] left-[30%] h-[300px] w-[300px] rounded-full bg-indigo-500/10 blur-[100px]"></div>
     </div>
-    <header class="flex-header absolute w-full z-50 pr-25">
+    <header class="flex-header absolute w-full z-50">
         <a href="http://www.linkedin.com/in/saul-garcia-luevano" class="font-header hover:text-white"
             target="_blank">Linkedin</a>
         <a href="https://github.com/garcialuevanosaul-design" class="font-header hover:text-white" target="_blank">
@@ -29,20 +29,20 @@
         <a href="src/Official_CV.pdf" class="font-header hover:text-white" download="resume">CV ↓</a>
     </header>
     <main>
-        <section class="h-screen snap-start flex flex-col justify-center items-center" id="home"> <!--Home Section-->
-            <div class="flex-col md:flex-row justify-between items-start px-10">
+        <section class="h-screen snap-start flex flex-row justify-center items-center" id="home"> <!--Home Section-->
+            <div class="flex flex-col md:flex-row justify-center items-center md:items-start px-10 md:text-center gap-20">
 
-                <div class="md:ml-45 md:mr-50">
+                <div>
                     <!-- Header content -->
                     <h1 class="text-white font-[Google_Sans_Code] text-4xl md:text-6xl lg:text-8xl  ">Hello! I'm Saul Garcia</h1>
                     <p class="font-header">I am a sophomore computer science major at the University of Texas at El
-                        Paso. As a computer scientist, I am passionate about creating and innovating in the world of
-                        technology and having the ability to develop tools to democratize technology around the world.
+                        Paso. As a computer scientist, <br>I am passionate about creating and innovating in the world of
+                        technology and having the ability to <br> develop tools to democratize technology around the world.
                     </p>
 
                 </div>
 
-                <ul class="list-none space-y-15 m-0 md:mr-50 md:ml-25">
+                <ul class="list-none space-y-15 m-0 ">
                     <li class="font-header hover:text-white"><a href="#projects">Projects</a></li>
                     <li class="font-header hover:text-white"><a href="#certificates">Certificates</a></li>
                     <li class="font-header hover:text-white"><a href="#technologies">Technologies</a></li>
@@ -91,7 +91,7 @@
                     <div class="flex justify-center">
                         <div class="codeDisplay-style ">
                             <pre>
-            <code class="language-java">
+            <code class="language-java text-sm">
                 import java.io.File;
                 import java.io.FileNotFoundException;
                 import java.util.InputMismatchException;
@@ -996,7 +996,7 @@
                 </div>
 
             </div>
-            <div class="mx-auto mt-25 rounded-lg bg-transparent text-white border border-gray-50 pl-20 pt-5 pb-5 w-full max-w-6xl flex flex-col justify-center items-center">
+            <div class="project-Card">
                 <h2 class="font-[Stack_Sans] text-3xl text-white">Final Project: Relational Database for Local
                     Businesses
                 </h2>
@@ -1025,7 +1025,7 @@
             </div>
         </section>
 
-        <section class="h-screen snap-start flex flex-col justify-center items-center" id="certificates">
+        <section class="min-h-screen py-10 snap-start flex flex-col justify-center items-center" id="certificates" id="certificates">
             <!--Certificates Section-->
             <div class="flex justify-center pt-10 pb-5">
                 <h2 class="font-subtitles">
@@ -1087,7 +1087,7 @@
 
         </section>
 
-        <section class="h-screen snap-start flex flex-col justify-center items-center" id="technologies">
+        <section class="min-h-screen py-10 snap-start flex flex-col justify-center items-center" id="technologies">
             <!--Technologies Section-->
             <div class="flex justify-center pt-10 pb-5">
                 <h1 class="font-subtitles flex flex-col justify-center items-center">Technologies</h1>
